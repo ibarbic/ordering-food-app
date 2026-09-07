@@ -37,6 +37,7 @@ const Home = () => {
             </h1>
             <div className ='flex flex-wrap items-center justify-around gap-5'>
                 {
+                    // eslint-disable-next-line no-unused-vars
                     restaurant.map((item) => <RestaurantCard/>)
                 }
 

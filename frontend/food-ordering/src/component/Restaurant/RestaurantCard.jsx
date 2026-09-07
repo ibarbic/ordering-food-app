@@ -5,7 +5,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const RestaurantCard = () => {
   return (
-    <Card className="w-[18rem] h-72 ">
+    <Card className="w-[18rem]">
 
         <div className = {`${true ? 'cursor-pointer' : "cursor-not-allowed"} relative `}>
             <img src="https://images.pexels.com/photos/30479386/pexels-photo-30479386.jpeg" alt="Restaurant" className="w-full h-40 rounded-t-md object-cover" />
