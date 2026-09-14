@@ -1,35 +1,25 @@
-
-import './App.css'
-import {CssBaseline, ThemeProvider} from '@mui/material';
-import { darkTheme } from './component/Theme/DarkTheme';
-import Navbar from './component/Navbar/Navbar';
-import Home from './component/Home/Home';
-import RestaurantDetails from './component/Restaurant/RestaurantDetails';
-
-
+import "./App.css";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { darkTheme } from "./component/Theme/DarkTheme";
+import Navbar from "./component/Navbar/Navbar";
+import Home from "./component/Home/Home";
+import RestaurantDetails from "./component/Restaurant/RestaurantDetails";
+import Cart from "./component/Cart/Cart";
 
 /**
-   @todo: 2.10.16 
+   @todo: 2.32.24
 **/
 
-
-
 function App() {
-
-
   return (
-    
     <ThemeProvider theme={darkTheme}>
-      <CssBaseline/>
-      <Navbar/>
+      <CssBaseline />
+      <Navbar />
       {/* <Home/> */}
-      <RestaurantDetails/>
-
-
+      {/* <RestaurantDetails /> */}
+      <Cart/>
     </ThemeProvider>
-
-    
   );
 }
 
-export default App
+export default App;
