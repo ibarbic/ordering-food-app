@@ -5,9 +5,10 @@ import Navbar from "./component/Navbar/Navbar";
 import Home from "./component/Home/Home";
 import RestaurantDetails from "./component/Restaurant/RestaurantDetails";
 import Cart from "./component/Cart/Cart";
+import Profile from "./component/Profile/Profile";
 
 /**
-   @todo: 2.32.24
+   @todo: 3.45.00
 **/
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Navbar />
       {/* <Home/> */}
       {/* <RestaurantDetails /> */}
-      <Cart/>
+      {/* <Cart/> */}
+      <Profile/>
     </ThemeProvider>
   );
 }
