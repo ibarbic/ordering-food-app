@@ -8,7 +8,7 @@ import Cart from "./component/Cart/Cart";
 import Profile from "./component/Profile/Profile";
 
 /**
-   @todo: 3.45.00
+   @todo: 3.50.00
 **/
 
 function App() {
