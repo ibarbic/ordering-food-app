@@ -1,4 +1,3 @@
-
 import { createTheme } from "@mui/material";
 
 export const darkTheme = createTheme({
@@ -12,7 +11,7 @@ export const darkTheme = createTheme({
     },
     background: {
       default: "#0D0D0D", // Used for the default body color
-      paper: "#0D0D0D",   // Used for cards, navbars, surfaces
+      paper: "#0D0D0D", // Used for cards, navbars, surfaces
     },
     // Standard custom color expansion block (Safe for Javascript UI)
     error: {

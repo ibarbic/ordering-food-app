@@ -7,30 +7,26 @@ import { TopMeals } from "./TopMeals";
 const Slider = SliderImport.default || SliderImport;
 
 const MultiItemCarousel = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: false,
+  };
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        arrows: false,
-        
-    };
+  return (
+    <div>
+      <Slider {...settings}>
+        {TopMeals.map((item) => (
+          <CarouselItem image={item.image} title={item.title} />
+        ))}
+      </Slider>
+    </div>
+  );
+};
 
-    return (
-        <div>
-        
-            <Slider {...settings}>
-                {TopMeals.map((item) => (
-                    <CarouselItem image = {item.image} title = {item.title}/>
-                ))}
-            </Slider>
-        
-        </div>
-  )
-}
-
-export default MultiItemCarousel
+export default MultiItemCarousel;

@@ -6,20 +6,22 @@ import Home from "./component/Home/Home";
 import RestaurantDetails from "./component/Restaurant/RestaurantDetails";
 import Cart from "./component/Cart/Cart";
 import Profile from "./component/Profile/Profile";
+import CustomerRoute from "./component/Routers/CustomerRoute";
 
 /**
-   @todo: 3.50.00
+   @todo: 4.20.00
 **/
 
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <Home/> */}
       {/* <RestaurantDetails /> */}
       {/* <Cart/> */}
-      <Profile/>
+      {/* <Profile/> */}
+      <CustomerRoute/>
     </ThemeProvider>
   );
 }
