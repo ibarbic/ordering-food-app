@@ -1,3 +1,4 @@
+import Auth from "../Auth/Auth";
 import RestaurantCard from "../Restaurant/RestaurantCard";
 import "./Home.css";
 import MultiItemCarousel from "./MultiItemCarousel";

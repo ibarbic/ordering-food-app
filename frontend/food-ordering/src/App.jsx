@@ -9,7 +9,7 @@ import Profile from "./component/Profile/Profile";
 import CustomerRoute from "./component/Routers/CustomerRoute";
 
 /**
-   @todo: 4.20.00
+   @todo: 4.51.00
 **/
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       {/* <RestaurantDetails /> */}
       {/* <Cart/> */}
       {/* <Profile/> */}
-      <CustomerRoute/>
+      <CustomerRoute />
     </ThemeProvider>
   );
 }

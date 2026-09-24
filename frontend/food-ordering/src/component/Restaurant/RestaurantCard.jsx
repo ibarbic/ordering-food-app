@@ -23,7 +23,7 @@ const RestaurantCard = () => {
       </div>
       <div className="p-4 textPart lg:flex w-full justify-between">
         <div className="space-y-1">
-          <p ClassName="font-semibold text-lg">Pizza place</p>
+          <p className="font-semibold text-lg">Pizza place</p>
           <p className="text-gray-500 text-sm">
             Craving it all? Dive into our global fla...
           </p>

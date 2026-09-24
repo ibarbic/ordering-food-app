@@ -19,15 +19,13 @@ const menu = [
   { title: "Logout", icon: <LogoutIcon /> },
 ];
 
-
 const ProfileNavigation = ({ open, handleClose }) => {
-  const isSmallScreen = useMediaQuery('(max-width:900px)');
+  const isSmallScreen = useMediaQuery("(max-width:900px)");
   const navigate = useNavigate();
 
   const handleNavigate = (item) => {
-    navigate(`/my-profile/${item.title.toLowerCase()}`)
-
-  }
+    navigate(`/my-profile/${item.title.toLowerCase()}`);
+  };
 
   return (
     <div>
@@ -36,17 +34,21 @@ const ProfileNavigation = ({ open, handleClose }) => {
         onClose={handleClose}
         open={isSmallScreen ? open : true}
         anchor="left"
-        sx={{ zIndex: 1, position:"sticky"}}
+        sx={{ zIndex: 1, position: "sticky" }}
       >
         <div className="w-[50vw] lg:w-[20vw] h-screen flex flex-col justify-center text-xl gap-8 pt-16">
-            {menu.map((item,i)=><>
-                <div onClick={()=>handleNavigate(item)} className="px-5 flex items-center space-x-5 cursor-pointer">
-                    {item.icon}
-                    <span>{item.title}</span>
-                </div>
-                {i!== menu.length-1 && <Divider/>}
-            </>)}
-
+          {menu.map((item, i) => (
+            <>
+              <div
+                onClick={() => handleNavigate(item)}
+                className="px-5 flex items-center space-x-5 cursor-pointer"
+              >
+                {item.icon}
+                <span>{item.title}</span>
+              </div>
+              {i !== menu.length - 1 && <Divider />}
+            </>
+          ))}
         </div>
       </Drawer>
     </div>

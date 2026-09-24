@@ -48,7 +48,7 @@ const Cart = () => {
   const handleOpenAddressModal = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleSubmit = (value) => {
-    console.log("form value", value)
+    console.log("form value", value);
   };
   return (
     <div>
@@ -128,72 +128,100 @@ const Cart = () => {
             validationSchema={validationScheme}
             onSubmit={handleSubmit}
           >
-          {({ errors, touched }) => (
-            <Form>
-  <Grid container spacing={2}>
-    <Grid size = {12}>
-      <Field
-        as={TextField}
-        name="streetAddress"
-        label="Street Address"
-        fullWidth
-        variant="outlined"
-        error={touched.streetAddress && Boolean(errors.streetAddress)}
-        helperText={
-          <ErrorMessage name="streetAddress" render={(msg) => <span className="text-red-600">{msg}</span>} />
-        }
-      />
-    </Grid>
+            {({ errors, touched }) => (
+              <Form>
+                <Grid container spacing={2}>
+                  <Grid size={12}>
+                    <Field
+                      as={TextField}
+                      name="streetAddress"
+                      label="Street Address"
+                      fullWidth
+                      variant="outlined"
+                      error={
+                        touched.streetAddress && Boolean(errors.streetAddress)
+                      }
+                      helperText={
+                        <ErrorMessage
+                          name="streetAddress"
+                          render={(msg) => (
+                            <span className="text-red-600">{msg}</span>
+                          )}
+                        />
+                      }
+                    />
+                  </Grid>
 
-    {/* State + Zipcode share one row */}
-    <Grid size={6}>
-      <Field
-        as={TextField}
-        name="state"
-        label="State"
-        fullWidth
-        variant="outlined"
-        error={touched.state && Boolean(errors.state)}
-        helperText={
-          <ErrorMessage name="state" render={(msg) => <span className="text-red-600">{msg}</span>} />
-        }
-      />
-    </Grid>
-    <Grid size={6}>
-      <Field
-        as={TextField}
-        name="zipcode"
-        label="Zipcode"
-        fullWidth
-        variant="outlined"
-        error={touched.zipcode && Boolean(errors.zipcode)}
-        helperText={
-          <ErrorMessage name="zipcode" render={(msg) => <span className="text-red-600">{msg}</span>} />
-        }
-      />
-    </Grid>
+                  {/* State + Zipcode share one row */}
+                  <Grid size={6}>
+                    <Field
+                      as={TextField}
+                      name="state"
+                      label="State"
+                      fullWidth
+                      variant="outlined"
+                      error={touched.state && Boolean(errors.state)}
+                      helperText={
+                        <ErrorMessage
+                          name="state"
+                          render={(msg) => (
+                            <span className="text-red-600">{msg}</span>
+                          )}
+                        />
+                      }
+                    />
+                  </Grid>
+                  <Grid size={6}>
+                    <Field
+                      as={TextField}
+                      name="zipcode"
+                      label="Zipcode"
+                      fullWidth
+                      variant="outlined"
+                      error={touched.zipcode && Boolean(errors.zipcode)}
+                      helperText={
+                        <ErrorMessage
+                          name="zipcode"
+                          render={(msg) => (
+                            <span className="text-red-600">{msg}</span>
+                          )}
+                        />
+                      }
+                    />
+                  </Grid>
 
-    <Grid size={12}>
-      <Field
-        as={TextField}
-        name="city"
-        label="City"
-        fullWidth
-        variant="outlined"
-        error={touched.city && Boolean(errors.city)}
-        helperText={
-          <ErrorMessage name="city" render={(msg) => <span className="text-red-600">{msg}</span>} />
-        }
-      />
-    </Grid>
+                  <Grid size={12}>
+                    <Field
+                      as={TextField}
+                      name="city"
+                      label="City"
+                      fullWidth
+                      variant="outlined"
+                      error={touched.city && Boolean(errors.city)}
+                      helperText={
+                        <ErrorMessage
+                          name="city"
+                          render={(msg) => (
+                            <span className="text-red-600">{msg}</span>
+                          )}
+                        />
+                      }
+                    />
+                  </Grid>
 
-    <Grid item xs={12}>
-      <Button type="submit" variant="contained" color="primary" fullWidth>
-        Save Address
-      </Button>
-    </Grid>
-  </Grid>
-</Form>)}
+                  <Grid item xs={12}>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                    >
+                      Save Address
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Form>
+            )}
           </Formik>
         </Box>
       </Modal>

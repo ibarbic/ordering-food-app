@@ -1,11 +1,14 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { Avatar } from "@mui/material";
+import { Avatar, fabClasses } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
 import "./Navbar.css";
+import { Person } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <div className="px-5 sticky top-0 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 flex justify-between">
       <div className="lg:mr-10 cursor-pointer flex items-center space-x-4">
@@ -22,7 +25,13 @@ export default function Navbar() {
         </div>
 
         <div className="">
-          <Avatar sx={{ bgcolor: "white", color: "#F50057" }}>I</Avatar>
+          {false ? (
+            <Avatar sx={{ bgcolor: "white", color: "#F50057" }}>I</Avatar>
+          ) : (
+            <IconButton onClick={() => navigate("/account/login")}>
+              <Person />
+            </IconButton>
+          )}
         </div>
 
         <div>
