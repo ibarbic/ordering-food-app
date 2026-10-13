@@ -13,7 +13,7 @@ import { getUser } from "./component/State/Authentication/Action";
 import { store } from "./component/State/Authentication/store";
 
 /**
-   @todo: 6.06 finished restaurant by user 
+   @todo: 6.21 finished restaurant by user 
 **/
 
 function App() {
