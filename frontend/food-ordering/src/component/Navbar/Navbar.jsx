@@ -7,7 +7,7 @@ import "./Navbar.css";
 import { Person } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { store } from "../State/Authentication/store";
+import { store } from "../../State/store";
 
 export default function Navbar() {
   const { auth } = useSelector((store) => store);

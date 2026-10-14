@@ -121,3 +121,5 @@ const restaurantReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default restaurantReducer;

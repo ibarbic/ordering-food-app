@@ -9,11 +9,11 @@ import Profile from "./component/Profile/Profile";
 import CustomerRoute from "./component/Routers/CustomerRoute";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "./component/State/Authentication/Action";
-import { store } from "./component/State/Authentication/store";
+import { getUser } from "./State/Authentication/Action";
+import { store } from "./State/store";
 
 /**
-   @todo: 6.21 finished restaurant by user 
+   @todo: 6.36 finished restaurant by user 
 **/
 
 function App() {
