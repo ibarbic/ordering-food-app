@@ -1,4 +1,4 @@
-import { api } from "../../config/api";
+import { api } from "../../component/config/api";
 import {
   GET_ALL_RESTAURANT_REQUEST,
   GET_ALL_RESTAURANT_SUCCESS,

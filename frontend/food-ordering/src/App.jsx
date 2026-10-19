@@ -13,7 +13,7 @@ import { getUser } from "./State/Authentication/Action";
 import { store } from "./State/store";
 
 /**
-   @todo: 7.01
+   @todo: 7.26
 **/
 
 function App() {
