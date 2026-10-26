@@ -5,6 +5,7 @@ import "./Home.css";
 import MultiItemCarousel from "./MultiItemCarousel";
 import { useEffect } from "react";
 import { getAllRestaurantsAction } from "../../State/Restaurant/RestaurantAction";
+import { useNavigate } from "react-router-dom";
 
 const restaurants = [
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -13,6 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
   const { restaurant } = useSelector((store) => store);
+  const navigate = useNavigate();
 
   console.log("restaurant", restaurant);
 

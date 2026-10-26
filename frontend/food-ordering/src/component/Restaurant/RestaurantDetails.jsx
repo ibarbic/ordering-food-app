@@ -9,8 +9,11 @@ import {
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MenuCard from "./MenuCard";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getRestaurantById } from "../../State/Restaurant/RestaurantAction";
 const foodCategories = ["pizza", "burger", "pasta", "salad", "dessert"];
 
 const foodTypes = [
@@ -25,6 +28,13 @@ const menuItems = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 const RestaurantDetails = () => {
   const [foodType, setFoodType] = useState("all");
   const [foodCategory, setFoodCat] = useState(foodCategories[0]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+  const { auth, restaurant } = useSelector((store) => store);
+
+  const { id, city } = useParams();
+
   const handleFilter = (e) => {
     const { name, value } = e.target;
     if (name === "foodType") {
@@ -35,6 +45,10 @@ const RestaurantDetails = () => {
 
     console.log(e.target.value, e.target.name);
   };
+  console.log("restaurant", restaurant);
+  useEffect(() => {
+    dispatch(getRestaurantById({ jwt, restaurantId: id }));
+  }, []);
   return (
     <div className="px-5 lg:px-20 ">
       <section>
@@ -46,7 +60,7 @@ const RestaurantDetails = () => {
             <Grid item size={{ xs: 12, sm: 12 }}>
               <img
                 className="w-full h-[40vh] object-cover"
-                src="https://cdn.pixabay.com/photo/2016/02/10/13/35/hotel-1191718_1280.jpg"
+                src={restaurant.restaurant?.images[0]}
                 alt=""
               />
             </Grid>
@@ -54,7 +68,7 @@ const RestaurantDetails = () => {
             <Grid item size={{ xs: 12, sm: 6 }}>
               <img
                 className="w-full h-[40vh] object-cover"
-                src="https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?q=80&w=1189&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src={restaurant.restaurant?.images[1]}
                 alt=""
               />
             </Grid>
@@ -70,12 +84,11 @@ const RestaurantDetails = () => {
         </div>
 
         <div className="pt-3 pb-5">
-          <h1 className="text-4xl font-semibold">Indian Fast Food</h1>
+          <h1 className="text-4xl font-semibold">
+            {restaurant.restaurant?.name}
+          </h1>
           <p className="text-gray-500 mt-1">
-            <span>
-              Experience the best of Indian cuisine with our fast and delicious
-              meals.
-            </span>
+            <span>{restaurant.restaurant?.description}</span>
           </p>
           <div className="space-y-3 mt-3">
             <p className="text-gray-500 flex items-center gap-3">
