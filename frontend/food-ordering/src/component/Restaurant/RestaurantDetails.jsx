@@ -17,6 +17,7 @@ import {
   getRestaurantById,
   getRestaurantsCategory,
 } from "../../State/Restaurant/RestaurantAction";
+import { getMenuItemsByRestaurantId } from "../../State/Menu/MenuAction";
 
 const foodTypes = [
   { label: "All", value: "all" },
@@ -50,6 +51,16 @@ const RestaurantDetails = () => {
   useEffect(() => {
     dispatch(getRestaurantById({ jwt, restaurantId: id }));
     dispatch(getRestaurantsCategory({ jwt, restaurantId: id }));
+    dispatch(
+      getMenuItemsByRestaurantId({
+        jwt,
+        restaurantId: id,
+        vegetarian: false,
+        nonveg: false,
+        seasonal: false,
+        foodCategory: "",
+      }),
+    );
   }, []);
   return (
     <div className="px-5 lg:px-20 ">

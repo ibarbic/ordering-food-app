@@ -1,4 +1,4 @@
-import { api } from "../../config/api";
+import { api } from "../../component/config/api";
 import {
   CREATE_MENU_ITEM_REQUEST,
   CREATE_MENU_ITEM_SUCCESS,
