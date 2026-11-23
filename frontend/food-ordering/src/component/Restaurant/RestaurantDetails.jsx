@@ -21,7 +21,7 @@ import { getMenuItemsByRestaurantId } from "../../State/Menu/MenuAction";
 
 const foodTypes = [
   { label: "All", value: "all" },
-  { label: "Veg", value: "veg" },
+  { label: "Vegeterian", value: "vegeterian" },
   { label: "Non-Veg", value: "non-veg" },
   { label: "Seasonal", value: "seasonal" },
 ];
@@ -30,38 +30,47 @@ const menuItems = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 const RestaurantDetails = () => {
   const [foodType, setFoodType] = useState("all");
+  const [foodCategory, setFoodCategory] = useState("all");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
   const { auth, restaurant, menu } = useSelector((store) => store);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const { id, city } = useParams();
 
-  const handleFilter = (e) => {
+  const handleFilterFoodType = (e) => {
     const { name, value } = e.target;
-    if (name === "foodType") {
-      setFoodType(value);
-    } else if (name === "foodCategory") {
-      setFoodCat(value);
-    }
+    setFoodType(value);
+    console.log(name, "->", value);
+    //   console.log("Selected Food Type:", foodType);
+    //   console.log(e.target.value, e.target.name);
+  };
 
-    console.log(e.target.value, e.target.name);
+  const handleFilterCategory = (e) => {
+    const { name, value } = e.target;
+    setFoodCategory(value);
+    setSelectedCategory(value === "all" ? "" : value);
+    console.log(name, "->", value);
   };
   console.log("restaurant", restaurant);
   useEffect(() => {
     dispatch(getRestaurantById({ jwt, restaurantId: id }));
     dispatch(getRestaurantsCategory({ jwt, restaurantId: id }));
+  }, []);
+
+  useEffect(() => {
     dispatch(
       getMenuItemsByRestaurantId({
         jwt,
         restaurantId: id,
-        vegetarian: false,
-        nonveg: false,
-        seasonal: false,
-        foodCategory: "",
+        vegetarian: foodType === "vegeterian",
+        nonveg: foodType === "non-veg",
+        seasonal: foodType === "seasonal",
+        foodCategory: selectedCategory,
       }),
     );
-  }, []);
+  }, [selectedCategory, foodType]);
   return (
     <div className="px-5 lg:px-20 ">
       <section>
@@ -129,7 +138,7 @@ const RestaurantDetails = () => {
                 <RadioGroup
                   name="foodType"
                   value={foodType}
-                  onChange={handleFilter}
+                  onChange={handleFilterFoodType}
                 >
                   {foodTypes.map((item) => (
                     <FormControlLabel
@@ -151,13 +160,13 @@ const RestaurantDetails = () => {
               <FormControl className="py-10 space-y-5" component={"fieldset"}>
                 <RadioGroup
                   name="foodCategory"
-                  value={foodType}
-                  onChange={handleFilter}
+                  value={selectedCategory}
+                  onChange={handleFilterCategory}
                 >
                   {restaurant.categories.map((item) => (
                     <FormControlLabel
-                      key={item}
-                      value={item}
+                      key={item.id}
+                      value={item.name}
                       control={<Radio />}
                       label={item.name}
                     />
@@ -170,7 +179,7 @@ const RestaurantDetails = () => {
 
         <div className="space-y-5 lg:w-[80%] lg:pl-10">
           {menu.menuItems.map((item) => (
-            <MenuCard item={item} />
+            <MenuCard key={item.id} item={item} />
           ))}
         </div>
       </section>
