@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -14,6 +14,8 @@ import {
   FormGroup,
 } from "@mui/material";
 import { categorizeIngredients } from "../util/CategorizeIngredients";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../State/Cart/CartAction";
 
 const ingredients = [
   {
@@ -33,8 +35,31 @@ const ingredients = [
 ];
 
 const MenuCard = ({ item }) => {
-  const handleCheckBoxChange = (value) => {
-    console.log(value);
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const dispatch = useDispatch();
+
+  const handleCheckBoxChange = (ingredient) => {
+    if (selectedIngredients.includes(ingredient)) {
+      setSelectedIngredients(
+        selectedIngredients.filter((item) => item !== ingredient),
+      );
+    } else {
+      setSelectedIngredients([...selectedIngredients, ingredient]);
+    }
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    const reqData = {
+      token: localStorage.getItem("jwt"),
+      cartItem: {
+        foodId: item.id,
+        quantity: 1,
+        ingredients: selectedIngredients.map((ingredient) => ingredient.name),
+      },
+    };
+    dispatch(addItemToCart(reqData));
+    console.log("reqData ", reqData);
   };
 
   return (
@@ -65,14 +90,14 @@ const MenuCard = ({ item }) => {
           <div className="flex gap-5 flex-wrap">
             {Object.keys(categorizeIngredients(item.ingredients)).map(
               (category) => (
-                <div>
+                <div key={category}>
                   <p>{category}</p>
 
                   <FormGroup>
                     {categorizeIngredients(item.ingredients)[category].map(
                       (item) => (
                         <FormControlLabel
-                          key={item.name}
+                          key={item.id}
                           control={
                             <Checkbox
                               onChange={() => handleCheckBoxChange(item)}
@@ -88,7 +113,12 @@ const MenuCard = ({ item }) => {
             )}
           </div>
           <div className="pt-5">
-            <Button variant="contained" disabled={false} type="submit">
+            <Button
+              onClick={handleAddToCart}
+              variant="contained"
+              disabled={false}
+              type="submit"
+            >
               {true ? "Add to Cart" : " Out of Stock"}
             </Button>
           </div>

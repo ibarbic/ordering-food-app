@@ -58,7 +58,7 @@ export const addItemToCart = (reqData) => {
     try {
       const { data } = await api.put(`/api/cart/add`, reqData.cartItem, {
         headers: {
-          Authorization: `Bearer ${reqData.jwt}`,
+          Authorization: `Bearer ${reqData.token}`,
         },
       });
       console.log("add item to cart ", data);
